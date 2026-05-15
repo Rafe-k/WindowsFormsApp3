@@ -77,23 +77,59 @@ namespace WindowsFormsApp1
         {
             if (!ValidateInputs()) return;
 
-            int newId = inventory_list.Count + 1000;
-            string newName = textBoxName.Text;
-            decimal newPrice = decimal.Parse(textBoxPrice.Text);
-            string newDescription = textBoxDescription.Text;
-            int newQuantity = int.Parse(textBoxQuantity.Text);
-            string newUnit = textBoxUnit.Text;
+            DialogResult result = MessageBox.Show($"Are you sure you would like to add {textBoxDelete.Text}?", "Confirm addition", MessageBoxButtons.YesNo);
 
-            Product newProduct = new Product(newId, newName, newPrice, newDescription, newQuantity, newUnit);
+            if (result == DialogResult.Yes)
+            {
+                int newId = inventory_list.Count + 1000;
+                string newName = textBoxName.Text;
+                decimal newPrice = decimal.Parse(textBoxPrice.Text);
+                string newDescription = textBoxDescription.Text;
+                int newQuantity = int.Parse(textBoxQuantity.Text);
+                string newUnit = textBoxUnit.Text;
 
-            inventory_list.Add(newProduct);
+                Product newProduct = new Product(newId, newName, newPrice, newDescription, newQuantity, newUnit);
 
-            binding_variable_name.ResetBindings(false);
+                inventory_list.Add(newProduct);
 
-            ClearFields();
+                binding_variable_name.ResetBindings(false);
+
+                ClearFields();
+
+                textBoxDelete.Clear();
+                MessageBox.Show("The product was successfully added");
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            string searchTerm = textBoxDelete.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                MessageBox.Show("Enter the ID of the product you wish to delete");
+                return;
+            }
+
+            Product productToDelete = inventory_list.FirstOrDefault(p => p.ProductID.ToString() == searchTerm || p.ProductName.Equals(searchTerm, StringComparison.OrdinalIgnoreCase));
+
+            if (productToDelete != null)
+            {
+                DialogResult result = MessageBox.Show($"Are you sure you would like to delete {productToDelete.ProductName}?", "Confirm delete", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    inventory_list.Remove(productToDelete);
+
+                    textBoxDelete.Clear();
+                    MessageBox.Show("The product was successfully deleted");
+                }
+            } else {
+                MessageBox.Show("No product was found that matched that name or ID");
+            }
+        }
+
+        private void button_update_Click(object sender, EventArgs e)
         {
             string path = csv_path;
 

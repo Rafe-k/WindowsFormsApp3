@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
             {
 
                 writer.WriteLine("ProductID,ProductName,Price,Description,Quantity,Unit");
-
+                
                 foreach (var p in products)
                 {
                     string line = $"{p.ProductID},{p.ProductName},{p.ProductPrice * 100},{p.ProductDescription},{p.ProductQuantity},{p.ProductUnit}";

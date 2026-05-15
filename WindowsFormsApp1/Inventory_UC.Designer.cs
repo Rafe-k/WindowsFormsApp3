@@ -59,12 +59,18 @@ namespace WindowsFormsApp1
             this.buttonDelete = new System.Windows.Forms.Button();
             this.textBoxDelete = new System.Windows.Forms.TextBox();
             this.button_add = new System.Windows.Forms.Button();
+            this.button_update = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dataGridView1.Location = new System.Drawing.Point(326, 40);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(415, 370);
@@ -72,16 +78,20 @@ namespace WindowsFormsApp1
             // 
             // button_apply
             // 
+            this.button_apply.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button_apply.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_apply.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_apply.Location = new System.Drawing.Point(33, 270);
             this.button_apply.Name = "button_apply";
             this.button_apply.Size = new System.Drawing.Size(75, 23);
             this.button_apply.TabIndex = 5;
             this.button_apply.Text = "Apply";
-            this.button_apply.UseVisualStyleBackColor = true;
+            this.button_apply.UseVisualStyleBackColor = false;
             this.button_apply.Click += new System.EventHandler(this.button_apply_Click);
             // 
             // textBoxID
             // 
+            this.textBoxID.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxID.Location = new System.Drawing.Point(33, 49);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(179, 20);
@@ -89,6 +99,7 @@ namespace WindowsFormsApp1
             // 
             // textBoxUnit
             // 
+            this.textBoxUnit.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxUnit.Location = new System.Drawing.Point(33, 244);
             this.textBoxUnit.Name = "textBoxUnit";
             this.textBoxUnit.Size = new System.Drawing.Size(179, 20);
@@ -97,6 +108,7 @@ namespace WindowsFormsApp1
             // 
             // textBoxName
             // 
+            this.textBoxName.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxName.Location = new System.Drawing.Point(33, 88);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(179, 20);
@@ -104,6 +116,7 @@ namespace WindowsFormsApp1
             // 
             // textBoxPrice
             // 
+            this.textBoxPrice.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxPrice.Location = new System.Drawing.Point(33, 127);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(179, 20);
@@ -111,6 +124,7 @@ namespace WindowsFormsApp1
             // 
             // textBoxDescription
             // 
+            this.textBoxDescription.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxDescription.Location = new System.Drawing.Point(33, 166);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(179, 20);
@@ -118,6 +132,7 @@ namespace WindowsFormsApp1
             // 
             // textBoxQuantity
             // 
+            this.textBoxQuantity.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxQuantity.Location = new System.Drawing.Point(33, 205);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(179, 20);
@@ -126,7 +141,7 @@ namespace WindowsFormsApp1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 33);
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 12;
@@ -136,6 +151,7 @@ namespace WindowsFormsApp1
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label2.Location = new System.Drawing.Point(33, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
@@ -145,6 +161,7 @@ namespace WindowsFormsApp1
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label3.Location = new System.Drawing.Point(33, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
@@ -154,6 +171,7 @@ namespace WindowsFormsApp1
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label4.Location = new System.Drawing.Point(33, 150);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
@@ -163,6 +181,7 @@ namespace WindowsFormsApp1
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label5.Location = new System.Drawing.Point(33, 189);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 13);
@@ -172,6 +191,7 @@ namespace WindowsFormsApp1
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label6.Location = new System.Drawing.Point(33, 228);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 13);
@@ -180,45 +200,78 @@ namespace WindowsFormsApp1
             // 
             // button_cancel
             // 
+            this.button_cancel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button_cancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_cancel.Location = new System.Drawing.Point(137, 270);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(75, 23);
             this.button_cancel.TabIndex = 18;
             this.button_cancel.Text = "Clear";
-            this.button_cancel.UseVisualStyleBackColor = true;
+            this.button_cancel.UseVisualStyleBackColor = false;
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(33, 324);
+            this.buttonDelete.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDelete.Location = new System.Drawing.Point(33, 335);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 19;
             this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // textBoxDelete
             // 
-            this.textBoxDelete.Location = new System.Drawing.Point(36, 353);
+            this.textBoxDelete.Location = new System.Drawing.Point(33, 364);
             this.textBoxDelete.Name = "textBoxDelete";
             this.textBoxDelete.Size = new System.Drawing.Size(179, 20);
             this.textBoxDelete.TabIndex = 20;
             // 
             // button_add
             // 
-            this.button_add.Location = new System.Drawing.Point(137, 324);
+            this.button_add.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button_add.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_add.Location = new System.Drawing.Point(108, 264);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(75, 23);
             this.button_add.TabIndex = 21;
             this.button_add.Text = "Add";
-            this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.UseVisualStyleBackColor = false;
             this.button_add.Click += new System.EventHandler(this.button_add_Click);
+            // 
+            // button_update
+            // 
+            this.button_update.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button_update.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_update.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_update.Location = new System.Drawing.Point(33, 299);
+            this.button_update.Name = "button_update";
+            this.button_update.Size = new System.Drawing.Size(75, 23);
+            this.button_update.TabIndex = 22;
+            this.button_update.Text = "Update";
+            this.button_update.UseVisualStyleBackColor = false;
+            this.button_update.Click += new System.EventHandler(this.button_update_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button_add);
+            this.panel1.Location = new System.Drawing.Point(27, 33);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(194, 296);
+            this.panel1.TabIndex = 23;
             // 
             // Inventory_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button_add);
+            this.Controls.Add(this.button_update);
             this.Controls.Add(this.textBoxDelete);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.button_cancel);
@@ -227,7 +280,6 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxQuantity);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.textBoxPrice);
@@ -236,9 +288,12 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.button_apply);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panel1);
             this.Name = "Inventory_UC";
             this.Size = new System.Drawing.Size(800, 450);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +319,7 @@ namespace WindowsFormsApp1
         private Button buttonDelete;
         private TextBox textBoxDelete;
         private Button button_add;
+        private Button button_update;
+        private Panel panel1;
     }
 }
