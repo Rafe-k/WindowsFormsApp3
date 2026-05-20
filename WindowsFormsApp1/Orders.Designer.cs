@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.dgvAvailable = new System.Windows.Forms.DataGridView();
+            this.dgvCurrent = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCurrent)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvAvailable
@@ -40,14 +42,24 @@
             this.dgvAvailable.Size = new System.Drawing.Size(155, 123);
             this.dgvAvailable.TabIndex = 0;
             // 
+            // dgvCurrent
+            // 
+            this.dgvCurrent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCurrent.Location = new System.Drawing.Point(154, 65);
+            this.dgvCurrent.Name = "dgvCurrent";
+            this.dgvCurrent.Size = new System.Drawing.Size(155, 123);
+            this.dgvCurrent.TabIndex = 1;
+            // 
             // Orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvCurrent);
             this.Controls.Add(this.dgvAvailable);
             this.Name = "Orders";
             this.Size = new System.Drawing.Size(684, 425);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCurrent)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -55,5 +67,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvAvailable;
+        private System.Windows.Forms.DataGridView dgvCurrent;
     }
 }
