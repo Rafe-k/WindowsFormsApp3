@@ -175,6 +175,21 @@ namespace WindowsFormsApp1
             textBoxUnit.Clear();
         }
 
+        private void labelBack_Click(object sender, EventArgs e)
+        {
+            //showScreen(new Form_1());
+        }
 
+        private void showScreen(UserControl newScreen)
+        {
+            foreach (Control ctrl in panel1.Controls)
+            {
+                ctrl.Dispose();
+            }
+
+            panel1.Controls.Clear();
+            newScreen.Dock = DockStyle.Fill;
+            panel1.Controls.Add(newScreen);
+        }
     }
 }

@@ -61,6 +61,7 @@ namespace WindowsFormsApp1
             this.button_add = new System.Windows.Forms.Button();
             this.button_update = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelBack = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -267,10 +268,21 @@ namespace WindowsFormsApp1
             this.panel1.Size = new System.Drawing.Size(194, 296);
             this.panel1.TabIndex = 23;
             // 
+            // labelBack
+            // 
+            this.labelBack.AutoSize = true;
+            this.labelBack.Location = new System.Drawing.Point(245, 91);
+            this.labelBack.Name = "labelBack";
+            this.labelBack.Size = new System.Drawing.Size(49, 13);
+            this.labelBack.TabIndex = 24;
+            this.labelBack.Text = "Go Back";
+            this.labelBack.Click += new System.EventHandler(this.labelBack_Click);
+            // 
             // Inventory_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelBack);
             this.Controls.Add(this.button_update);
             this.Controls.Add(this.textBoxDelete);
             this.Controls.Add(this.buttonDelete);
@@ -290,7 +302,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "Inventory_UC";
-            this.Size = new System.Drawing.Size(800, 450);
+            this.Size = new System.Drawing.Size(810, 460);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -321,5 +333,6 @@ namespace WindowsFormsApp1
         private Button button_add;
         private Button button_update;
         private Panel panel1;
+        private Label labelBack;
     }
 }

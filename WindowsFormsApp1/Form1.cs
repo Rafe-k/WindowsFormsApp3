@@ -59,7 +59,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            showScreen(new Orders());
         }
 
         private void button3_Click(object sender, EventArgs e)

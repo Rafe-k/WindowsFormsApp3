@@ -105,6 +105,29 @@ namespace WindowsFormsApp1
                     ProductQuantity = 1
                 });
             }
+
+            _currentOrderItems.ResetBindings();
+            UpdateTotal();
+        }
+
+        private void UpdateTotal()
+        {
+            decimal total = _currentOrderItems.Sum(i => i.Subtotal);
+            label1.Text = $"Total: ${total:F2}";
+        }
+
+        private bool CheckDescriptionValididity(string text)
+        {
+            if (String.IsNullOrWhiteSpace(text)) return true;
+            string[] words = text.Split(new[] { " ", "\n", "\r", "\t" }, StringSplitOptions.RemoveEmptyEntries);
+            return words.Length <= 20;
+        }
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+
         }
     }
+
+
 }
