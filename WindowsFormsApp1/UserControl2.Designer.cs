@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Home_UC
+    partial class UserControl2
     {
         /// <summary> 
         /// Required designer variable.
