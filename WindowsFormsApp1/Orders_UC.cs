@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.Json
+using System.Text.Json;
 
 namespace WindowsFormsApp1
 {
@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
         public Orders_UC()
         {
             InitializeComponent();
-            SetUpOrderSystem();
+            SetupOrderSystem();
         }
 
         private void SetupOrderSystem()
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not load inventory: " + ex.Message);
+                MessageBox.Show("Inventory could not be loaded: " + ex.Message);
             }
         }
 
@@ -128,7 +128,7 @@ namespace WindowsFormsApp1
         {
             if (string.IsNullOrWhiteSpace(txtOrderName.Text))
             {
-                MessageBox.Show("Please enter an order name.");
+                MessageBox.Show("Enter an order name");
                 return;
             }
 
