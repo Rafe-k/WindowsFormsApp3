@@ -127,6 +127,20 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void button_update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var products = InventoryService.LoadFromCSV(_csvpath);
+                _availableProducts = new BindingList<Product>(products);
+                dgvAvailable.DataSource = _availableProducts;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Inventory couldn't be loaded" + ex.Message);
+            }
+        }
     }
 
 

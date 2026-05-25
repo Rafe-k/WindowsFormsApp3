@@ -32,17 +32,18 @@
             this.dgvCurrent = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button_add = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxOrderName = new System.Windows.Forms.TextBox();
+            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button_add = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxQuantity = new System.Windows.Forms.TextBox();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxQuantity = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxID = new System.Windows.Forms.TextBox();
-            this.textBoxOrderName = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.button_update = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrent)).BeginInit();
             this.panel1.SuspendLayout();
@@ -78,6 +79,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.button_update);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.textBoxOrderName);
             this.panel1.Controls.Add(this.textBoxID);
@@ -94,6 +96,60 @@
             this.panel1.Size = new System.Drawing.Size(194, 296);
             this.panel1.TabIndex = 31;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 1);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 13);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Order Name";
+            // 
+            // textBoxOrderName
+            // 
+            this.textBoxOrderName.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxOrderName.Location = new System.Drawing.Point(4, 15);
+            this.textBoxOrderName.Name = "textBoxOrderName";
+            this.textBoxOrderName.Size = new System.Drawing.Size(179, 20);
+            this.textBoxOrderName.TabIndex = 32;
+            // 
+            // textBoxID
+            // 
+            this.textBoxID.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxID.Location = new System.Drawing.Point(4, 54);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(179, 20);
+            this.textBoxID.TabIndex = 32;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label5.Location = new System.Drawing.Point(3, 155);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Quantity";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "ID";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label3.Location = new System.Drawing.Point(3, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Price";
+            // 
             // button_add
             // 
             this.button_add.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -107,14 +163,23 @@
             this.button_add.UseVisualStyleBackColor = false;
             this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
-            // label4
+            // label2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "ID";
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label2.Location = new System.Drawing.Point(3, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Name";
+            // 
+            // textBoxQuantity
+            // 
+            this.textBoxQuantity.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxQuantity.Location = new System.Drawing.Point(3, 171);
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.Size = new System.Drawing.Size(179, 20);
+            this.textBoxQuantity.TabIndex = 27;
             // 
             // textBoxPrice
             // 
@@ -132,68 +197,18 @@
             this.textBoxName.Size = new System.Drawing.Size(179, 20);
             this.textBoxName.TabIndex = 25;
             // 
-            // textBoxQuantity
+            // button_update
             // 
-            this.textBoxQuantity.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxQuantity.Location = new System.Drawing.Point(3, 171);
-            this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(179, 20);
-            this.textBoxQuantity.TabIndex = 27;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label5.Location = new System.Drawing.Point(3, 155);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "Quantity";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label3.Location = new System.Drawing.Point(3, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 29;
-            this.label3.Text = "Price";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label2.Location = new System.Drawing.Point(3, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Name";
-            // 
-            // textBoxID
-            // 
-            this.textBoxID.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxID.Location = new System.Drawing.Point(4, 54);
-            this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(179, 20);
-            this.textBoxID.TabIndex = 32;
-            // 
-            // textBoxOrderName
-            // 
-            this.textBoxOrderName.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxOrderName.Location = new System.Drawing.Point(4, 15);
-            this.textBoxOrderName.Name = "textBoxOrderName";
-            this.textBoxOrderName.Size = new System.Drawing.Size(179, 20);
-            this.textBoxOrderName.TabIndex = 32;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 1);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 13);
-            this.label6.TabIndex = 32;
-            this.label6.Text = "Order Name";
+            this.button_update.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button_update.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_update.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_update.Location = new System.Drawing.Point(6, 264);
+            this.button_update.Name = "button_update";
+            this.button_update.Size = new System.Drawing.Size(75, 23);
+            this.button_update.TabIndex = 32;
+            this.button_update.Text = "Update";
+            this.button_update.UseVisualStyleBackColor = false;
+            this.button_update.Click += new System.EventHandler(this.button_update_Click);
             // 
             // Orders
             // 
@@ -231,5 +246,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxOrderName;
         private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.Button button_update;
     }
 }
