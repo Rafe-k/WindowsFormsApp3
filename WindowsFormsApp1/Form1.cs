@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            showScreen(new Orders_UC());
         }
 
         private void showScreen(UserControl newScreen)
