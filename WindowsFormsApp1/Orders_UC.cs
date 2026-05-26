@@ -12,12 +12,12 @@ using System.Text.Json;
 
 namespace WindowsFormsApp1
 {
-    public partial class Orders : UserControl
+    public partial class Orders_UC : UserControl
     {
         private BindingList<Product> _availableProducts;
         private BindingList<OrderItem> _currentOrderItems = new BindingList<OrderItem>();
         private string _csvpath = "H:/Programming/WindowsFormsApp3/shop-product-catalog - shop-product-catalog.csv";
-        public Orders()
+        public Orders_UC()
         {
             InitializeComponent();
             SetupOrderSystem();
