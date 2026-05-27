@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -126,13 +127,13 @@ namespace WindowsFormsApp1
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtOrderName.Text))
+            if (string.IsNullOrWhiteSpace(textBoxOrderName.Text))
             {
                 MessageBox.Show("Enter an order name");
                 return;
             }
 
-            if (!IsDescriptionValid(txtDescription.Text))
+            if (!IsDescriptionValid(textBoxDescription.Text))
             {
                 MessageBox.Show("Description must be 20 words or less.");
                 return;
@@ -146,8 +147,8 @@ namespace WindowsFormsApp1
 
             Order newOrder = new Order
             {
-                OrderName = txtOrderName.Text,
-                Description = txtDescription.Text,
+                OrderName = textBoxOrderName.Text,
+                Description = textBoxDescription.Text,
                 OrderDate = DateTime.Now,
                 Items = _currentOrderItems.ToList(),
                 TotalAmount = _currentOrderItems.Sum(i => i.Subtotal)
@@ -174,8 +175,8 @@ namespace WindowsFormsApp1
         private void ResetOrderForm()
         {
             _currentOrderItems.Clear();
-            txtOrderName.Clear();
-            txtDescription.Clear();
+            textBoxOrderName.Clear();
+            textBoxDescription.Clear();
             UpdateTotal();
         }
 
@@ -218,8 +219,8 @@ namespace WindowsFormsApp1
 
             Order myOrder = new Order
             {
-                OrderName = txtOrderName.Text,
-                Description = txtDescription.Text,
+                OrderName = textBoxOrderName.Text,
+                Description = textBoxDescription.Text,
                 OrderDate = DateTime.Now,
                 Items = _currentOrderItems.ToList(),
                 TotalAmount = _currentOrderItems.Sum(i => i.Subtotal)
@@ -254,8 +255,8 @@ namespace WindowsFormsApp1
 
                     Order loadedOrder = JsonSerializer.Deserialize<Order>(jsonContent);
 
-                    txtOrderName.Text = loadedOrder.OrderName;
-                    txtDescription.Text = loadedOrder.Description;
+                    textBoxOrderName.Text = loadedOrder.OrderName;
+                    textBoxDescription.Text = loadedOrder.Description;
 
 
                     _currentOrderItems.Clear();
