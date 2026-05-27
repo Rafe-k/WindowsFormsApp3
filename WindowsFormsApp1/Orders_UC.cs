@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
             dgvCurrentOrder.AllowDrop = true;
         }
 
-        private void UC_Orders_Load(object sender, EventArgs e)
+        private void buttonLoad_Click(object sender, EventArgs e)
         {
             try
             {
@@ -67,6 +67,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Inventory could not be loaded: " + ex.Message);
             }
         }
+
 
         private void dgvAvailable_MouseDown(object sender, MouseEventArgs e)
         {
@@ -275,6 +276,6 @@ namespace WindowsFormsApp1
             }
         }
 
-
+  
     }
 }
