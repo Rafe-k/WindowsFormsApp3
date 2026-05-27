@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
 
         private BindingList<Product> _availableProducts;
         private BindingList<OrderItem> _currentOrderItems = new BindingList<OrderItem>();
-        private string _csvPath = "H:/Programming/WindowsFormsApp3/shop-product-catalog - shop-product-catalog.csv";
+        private string _csvPath = "C:/Users/rafea/source/repos/Rafe-k/WindowsFormsApp3/Copy of shop-product-catalog - shop-product-catalog.csv";
 
 
         public Orders_UC()
@@ -45,7 +45,7 @@ namespace WindowsFormsApp1
             dgvCurrentOrder.AutoGenerateColumns = false;
             dgvCurrentOrder.Columns.Clear();
             dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProductID", HeaderText = "ID", Width = 50 });
-            dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProductName", HeaderText = "Product", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProductName", HeaderText = "Product", Width = 100 });
             dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "UnitPrice", HeaderText = "Price", DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
             dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Quantity", HeaderText = "Qty", Width = 50 });
             dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Subtotal", HeaderText = "Subtotal", DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
@@ -126,7 +126,7 @@ namespace WindowsFormsApp1
             return words.Length <= 20;
         }
 
-        private void btnCheckout_Click(object sender, EventArgs e)
+        private void button_Checkout_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxOrderName.Text))
             {
@@ -134,7 +134,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            if (!IsDescriptionValid(textBoxDescription.Text))
+            if (!IsDescriptionValid(textBoxDesc.Text))
             {
                 MessageBox.Show("Description must be 20 words or less.");
                 return;
@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
             Order newOrder = new Order
             {
                 OrderName = textBoxOrderName.Text,
-                Description = textBoxDescription.Text,
+                Description = textBoxDesc.Text,
                 OrderDate = DateTime.Now,
                 Items = _currentOrderItems.ToList(),
                 TotalAmount = _currentOrderItems.Sum(i => i.Subtotal)
@@ -177,11 +177,11 @@ namespace WindowsFormsApp1
         {
             _currentOrderItems.Clear();
             textBoxOrderName.Clear();
-            textBoxDescription.Clear();
+            textBoxDesc.Clear();
             UpdateTotal();
         }
 
-        private void btnAddToOrder_Click(object sender, EventArgs e)
+        private void button_add_Click(object sender, EventArgs e)
         {
             if (dgvAvailable.SelectedRows.Count > 0)
             {
@@ -195,7 +195,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        private void button_remove_Click(object sender, EventArgs e)
         {
             if (dgvCurrentOrder.SelectedRows.Count > 0)
             {
@@ -214,14 +214,14 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void btnSaveOrder_Click(object sender, EventArgs e)
+        private void button_save_Click(object sender, EventArgs e)
         {
             if (_currentOrderItems.Count == 0) return;
 
             Order myOrder = new Order
             {
                 OrderName = textBoxOrderName.Text,
-                Description = textBoxDescription.Text,
+                Description = textBoxDesc.Text,
                 OrderDate = DateTime.Now,
                 Items = _currentOrderItems.ToList(),
                 TotalAmount = _currentOrderItems.Sum(i => i.Subtotal)
@@ -238,44 +238,14 @@ namespace WindowsFormsApp1
             MessageBox.Show("Order saved successfully.");
         }
 
-        private void btnLoadOrder_Click(object sender, EventArgs e)
+        private void button_loadOrder_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                Filter = "JSON files (*.json)|*.json",
-                Title = "Open Order File"
-            };
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-
-                    string jsonContent = File.ReadAllText(openFileDialog.FileName);
-
-
-                    Order loadedOrder = JsonSerializer.Deserialize<Order>(jsonContent);
-
-                    textBoxOrderName.Text = loadedOrder.OrderName;
-                    textBoxDescription.Text = loadedOrder.Description;
-
-
-                    _currentOrderItems.Clear();
-                    foreach (var item in loadedOrder.Items)
-                    {
-                        _currentOrderItems.Add(item);
-                    }
-
-                    UpdateTotal();
-                    MessageBox.Show("Order loaded successfully.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error loading file: " + ex.Message);
-                }
-            }
         }
 
-  
+        private void labelBack_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         private BindingSource binding_variable_name = new BindingSource();
 
 
-        string csv_path = "H:/Programming/WindowsFormsApp3/shop-product-catalog - shop-product-catalog.csv";
+        string csv_path = "C:/Users/rafea/source/repos/Rafe-k/WindowsFormsApp3/Copy of shop-product-catalog - shop-product-catalog.csv";
 
         private void Inventory_UC_load(object sender, EventArgs e)
         {
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
         {
             if (!ValidateInputs()) return;
 
-            DialogResult result = MessageBox.Show($"Are you sure you would like to add {textBoxDelete.Text}?", "Confirm addition", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show($"Are you sure you would like to add {textBoxName.Text}?", "Confirm addition", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
@@ -175,9 +175,15 @@ namespace WindowsFormsApp1
             textBoxUnit.Clear();
         }
 
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void labelBack_Click(object sender, EventArgs e)
         {
-
+            Application.Restart();
         }
+
     }
 }

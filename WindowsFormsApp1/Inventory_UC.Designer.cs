@@ -271,7 +271,7 @@ namespace WindowsFormsApp1
             // labelBack
             // 
             this.labelBack.AutoSize = true;
-            this.labelBack.Location = new System.Drawing.Point(245, 91);
+            this.labelBack.Location = new System.Drawing.Point(244, 33);
             this.labelBack.Name = "labelBack";
             this.labelBack.Size = new System.Drawing.Size(49, 13);
             this.labelBack.TabIndex = 24;

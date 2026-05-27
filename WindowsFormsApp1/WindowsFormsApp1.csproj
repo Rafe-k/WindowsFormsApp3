@@ -96,20 +96,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Orders_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Orders_UC.Designer.cs">
       <DependentUpon>Orders_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home_UserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home_UserControl.Designer.cs">
+      <DependentUpon>Home_UserControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home_UserControl.resx">
+      <DependentUpon>Home_UserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory_UC.resx">
       <DependentUpon>Inventory_UC.cs</DependentUpon>
@@ -126,9 +129,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="jsconfig1.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
