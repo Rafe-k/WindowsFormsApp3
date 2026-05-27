@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using System.Text.Json;
 
 namespace WindowsFormsApp1
 {
     public partial class Orders_UC : UserControl
     {
+
         private BindingList<Product> _availableProducts;
         private BindingList<OrderItem> _currentOrderItems = new BindingList<OrderItem>();
-        private string _csvpath = "H:/Programming/WindowsFormsApp3/shop-product-catalog - shop-product-catalog.csv";
+        private string _csvPath = "H:/Programming/WindowsFormsApp3/shop-product-catalog - shop-product-catalog.csv";
+
+
         public Orders_UC()
         {
             InitializeComponent();
@@ -27,40 +29,41 @@ namespace WindowsFormsApp1
         {
             dgvAvailable.ReadOnly = true;
             dgvAvailable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAvailable.MultiSelect = false;
+            dgvAvailable.MultiSelect = false; 
 
-            dgvCurrent.ReadOnly = true;
-            dgvCurrent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCurrent.MultiSelect = false;
+            dgvCurrentOrder.ReadOnly = true;
+            dgvCurrentOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCurrentOrder.MultiSelect = false;
 
             dgvAvailable.AutoGenerateColumns = false;
             dgvAvailable.Columns.Clear();
             dgvAvailable.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProductID", HeaderText = "ID", Name = "colID", Width = 50 });
             dgvAvailable.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProductName", HeaderText = "Product Name", Name = "colName", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
 
-            dgvCurrent.AutoGenerateColumns = false;
-            dgvAvailable.Columns.Clear();
-            dgvCurrent.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProductID", HeaderText = "ID", Width = 50 });
-            dgvCurrent.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProductName", HeaderText = "Product", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-            dgvCurrent.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "UnitPrice", HeaderText = "Price", DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
-            dgvCurrent.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Quantity", HeaderText = "Qty", Width = 50 });
-            dgvCurrent.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Subtotal", HeaderText = "Subtotal", DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
 
-            dgvCurrent.DataSource = _currentOrderItems;
-            dgvCurrent.AllowDrop = true;
+            dgvCurrentOrder.AutoGenerateColumns = false;
+            dgvCurrentOrder.Columns.Clear();
+            dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProductID", HeaderText = "ID", Width = 50 });
+            dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProductName", HeaderText = "Product", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "UnitPrice", HeaderText = "Price", DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
+            dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Quantity", HeaderText = "Qty", Width = 50 });
+            dgvCurrentOrder.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Subtotal", HeaderText = "Subtotal", DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
+
+            dgvCurrentOrder.DataSource = _currentOrderItems;
+            dgvCurrentOrder.AllowDrop = true;
         }
 
-        private void Orders_UC_Load(object sender, EventArgs e)
+        private void UC_Orders_Load(object sender, EventArgs e)
         {
             try
             {
-                var products = InventoryService.LoadFromCSV(_csvpath);
+                var products = InventoryService.LoadFromCSV(_csvPath);
                 _availableProducts = new BindingList<Product>(products);
                 dgvAvailable.DataSource = _availableProducts;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Inventory couldn't be loaded" + ex.Message);
+                MessageBox.Show("Inventory could not be loaded: " + ex.Message);
             }
         }
 
@@ -73,16 +76,13 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void dgvAvailable_DragEnter(object sender, DragEventArgs e)
+        private void dgvCurrentOrder_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(Product)))
-            {
                 e.Effect = DragDropEffects.Copy;
-            }
-
         }
 
-        private void dgvAvailable_DragDrop(object sender, DragEventArgs e)
+        private void dgvCurrentOrder_DragDrop(object sender, DragEventArgs e)
         {
             Product droppedProduct = (Product)e.Data.GetData(typeof(Product));
             AddProductToOrder(droppedProduct);
@@ -94,15 +94,16 @@ namespace WindowsFormsApp1
 
             if (existingItem != null)
             {
-                existingItem.ProductQuantity++;
-            } else
+                existingItem.Quantity++;
+            }
+            else
             {
                 _currentOrderItems.Add(new OrderItem
                 {
                     ProductID = product.ProductID,
                     ProductName = product.ProductName,
-                    ProductPrice = product.ProductPrice,
-                    ProductQuantity = 1
+                    UnitPrice = product.ProductPrice,
+                    Quantity = 1
                 });
             }
 
@@ -113,21 +114,166 @@ namespace WindowsFormsApp1
         private void UpdateTotal()
         {
             decimal total = _currentOrderItems.Sum(i => i.Subtotal);
-            label1.Text = $"Total: ${total:F2}";
+            lblTotal.Text = $"Total: ${total:F2}";
         }
 
-        private bool CheckDescriptionValididity(string text)
+        private bool IsDescriptionValid(string text)
         {
-            if (String.IsNullOrWhiteSpace(text)) return true;
-            string[] words = text.Split(new[] { " ", "\n", "\r", "\t" }, StringSplitOptions.RemoveEmptyEntries);
+            if (string.IsNullOrWhiteSpace(text)) return true;
+            string[] words = text.Split(new[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             return words.Length <= 20;
         }
 
-        private void button_add_Click(object sender, EventArgs e)
+        private void btnCheckout_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtOrderName.Text))
+            {
+                MessageBox.Show("Enter an order name");
+                return;
+            }
 
+            if (!IsDescriptionValid(txtDescription.Text))
+            {
+                MessageBox.Show("Description must be 20 words or less.");
+                return;
+            }
+
+            if (_currentOrderItems.Count == 0)
+            {
+                MessageBox.Show("The order list is empty.");
+                return;
+            }
+
+            Order newOrder = new Order
+            {
+                OrderName = txtOrderName.Text,
+                Description = txtDescription.Text,
+                OrderDate = DateTime.Now,
+                Items = _currentOrderItems.ToList(),
+                TotalAmount = _currentOrderItems.Sum(i => i.Subtotal)
+            };
+
+            try
+            {
+                string fileName = $"Order_{newOrder.OrderName}_{DateTime.Now:yyyyMMdd_HHmm}.json";
+
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string jsonString = JsonSerializer.Serialize(newOrder, options);
+
+                File.WriteAllText(fileName, jsonString);
+
+                MessageBox.Show("Order saved to JSON file successfully.");
+                ResetOrderForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving order: " + ex.Message);
+            }
         }
+
+        private void ResetOrderForm()
+        {
+            _currentOrderItems.Clear();
+            txtOrderName.Clear();
+            txtDescription.Clear();
+            UpdateTotal();
+        }
+
+        private void btnAddToOrder_Click(object sender, EventArgs e)
+        {
+            if (dgvAvailable.SelectedRows.Count > 0)
+            {
+                Product selectedProduct = (Product)dgvAvailable.SelectedRows[0].DataBoundItem;
+
+                AddProductToOrder(selectedProduct);
+            }
+            else
+            {
+                MessageBox.Show("Please select a product from the inventory list first.");
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dgvCurrentOrder.SelectedRows.Count > 0)
+            {
+
+                OrderItem itemToRemove = (OrderItem)dgvCurrentOrder.SelectedRows[0].DataBoundItem;
+
+
+                _currentOrderItems.Remove(itemToRemove);
+
+                _currentOrderItems.ResetBindings();
+                UpdateTotal();
+            }
+            else
+            {
+                MessageBox.Show("Please select an item in your current order to remove.");
+            }
+        }
+
+        private void btnSaveOrder_Click(object sender, EventArgs e)
+        {
+            if (_currentOrderItems.Count == 0) return;
+
+            Order myOrder = new Order
+            {
+                OrderName = txtOrderName.Text,
+                Description = txtDescription.Text,
+                OrderDate = DateTime.Now,
+                Items = _currentOrderItems.ToList(),
+                TotalAmount = _currentOrderItems.Sum(i => i.Subtotal)
+            };
+
+
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonContent = JsonSerializer.Serialize(myOrder, options);
+
+
+            string fileName = $"Order_{myOrder.OrderName}.json";
+            File.WriteAllText(fileName, jsonContent);
+
+            MessageBox.Show("Order saved successfully.");
+        }
+
+        private void btnLoadOrder_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json",
+                Title = "Open Order File"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+
+                    string jsonContent = File.ReadAllText(openFileDialog.FileName);
+
+
+                    Order loadedOrder = JsonSerializer.Deserialize<Order>(jsonContent);
+
+                    txtOrderName.Text = loadedOrder.OrderName;
+                    txtDescription.Text = loadedOrder.Description;
+
+
+                    _currentOrderItems.Clear();
+                    foreach (var item in loadedOrder.Items)
+                    {
+                        _currentOrderItems.Add(item);
+                    }
+
+                    UpdateTotal();
+                    MessageBox.Show("Order loaded successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading file: " + ex.Message);
+                }
+            }
+        }
+
+
     }
-
-
 }

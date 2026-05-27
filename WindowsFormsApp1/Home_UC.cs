@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class UserControl1 : UserControl
+    public partial class Home_UC : UserControl
     {
-        public UserControl1()
+        public Home_UC()
         {
             InitializeComponent();
         }
-
-
     }
 }
