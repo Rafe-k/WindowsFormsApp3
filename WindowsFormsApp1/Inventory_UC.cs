@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         private BindingSource binding_variable_name = new BindingSource();
 
 
-        string csv_path = "C:/Users/rafea/source/repos/Rafe-k/WindowsFormsApp3/Copy of shop-product-catalog - shop-product-catalog.csv";
+        string csv_path = "H:/Programming/WindowsFormsApp3/shop-product-catalog - shop-product-catalog.csv";
 
         private void Inventory_UC_load(object sender, EventArgs e)
         {
