@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
 
         private BindingList<Product> _availableProducts;
         private BindingList<OrderItem> _currentOrderItems = new BindingList<OrderItem>();
-        private string _csvPath = "C:/Users/rafea/source/repos/Rafe-k/WindowsFormsApp3/Copy of shop-product-catalog - shop-product-catalog.csv";
+        private string _csvPath = "H:/Programming/WindowsFormsApp3/shop-product-catalog - shop-product-catalog.csv";
 
 
         public Orders_UC()
